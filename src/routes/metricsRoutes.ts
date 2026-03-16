@@ -1,12 +1,12 @@
 import { Router } from "express";
-import { getMetrics } from "../services/metrics";
+import { getMetrics, getContentType } from "../services/metrics";
 
 const router = Router();
 
 router.get("/", async (req, res) => {
   try {
-    // O Prometheus espera que os dados venham num formato textual bem específico
-    res.set("Content-Type", "text/plain; version=0.0.4; charset=utf-8");
+    // Usa o content-type dinâmico do próprio registry do prom-client
+    res.set("Content-Type", getContentType());
 
     // Obtém a "fotografia" atual de todos os Contadores e Histogramas
     const metrics = await getMetrics();
