@@ -1,4 +1,5 @@
 import express from "express";
+import postRoutes from "./routes/postRoutes";
 import metricsRoutes from "./routes/metricsRoutes";
 
 const app = express();
@@ -7,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Conectando os roteadores
+app.use("/posts", postRoutes);
 app.use("/metrics", metricsRoutes);
 
 export default app;
