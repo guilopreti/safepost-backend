@@ -29,7 +29,7 @@ A API intercepta os posts recebidos (podem conter texto, imagem ou ambos). As re
 
 A severidade de cada categoria varia num score de **0 a 6**.
 
-> **Regra de Aprovação:** Para um post ser liberado (`approved: true`), **todos** os scores avaliados no texto e na imagem devem ser **≤ 2**. Caso qualquer categoria exceda esse valor em qualquer uma das mídias, o post inteiro é bloqueado.
+> **Regra de Aprovação:** Para um post ser liberado (`approved: true`), **todos** os scores avaliados no texto e na imagem devem ser **Exatamente 0** (qualquer desvio de segurança, mesmo que de nível Baixo (2), causará o bloqueio).
 
 \* _Para as imagens, além do score de segurança, a API tenta extrair **tags semânticas** (ex: "dog", "car", "beach") para dados analíticos de consumo._
 

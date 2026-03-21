@@ -55,7 +55,7 @@ export const moderateImage = async (imageBuffer: Buffer) => {
       scores[analysis.category] = analysis.severity || 0;
     });
 
-    const isApproved = !Object.values(scores).some((score) => score > 2);
+    const isApproved = !Object.values(scores).some((score) => score > 0);
 
     // Processa as tags visuais detectadas pelo Azure AI Vision
     const visionBody = visionResponse.body as any;

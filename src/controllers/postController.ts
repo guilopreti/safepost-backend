@@ -57,7 +57,7 @@ export const handlePost = async (
           isApproved = false;
 
           Object.entries(textResult.scores).forEach(([category, score]) => {
-            if (score > 2) metrics.postsBlockedByCategory.inc({ category });
+            if (score > 0) metrics.postsBlockedByCategory.inc({ category });
           });
         }
       }
@@ -81,7 +81,7 @@ export const handlePost = async (
           isApproved = false;
 
           Object.entries(imageResult.scores).forEach(([category, score]) => {
-            if (score > 2) metrics.postsBlockedByCategory.inc({ category });
+            if (score > 0) metrics.postsBlockedByCategory.inc({ category });
           });
 
           imageResult.detectedTags.forEach((tag: string) => {
