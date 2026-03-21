@@ -38,8 +38,7 @@ export const moderateText = async (text: string) => {
       scores[analysis.category] = analysis.severity || 0;
     });
 
-    // Regra do projeto: aprovado se TODOS os scores forem <= 2
-    const isApproved = !Object.values(scores).some((score) => score > 2);
+    const isApproved = !Object.values(scores).some((score) => score > 0);
 
     return {
       success: true,
