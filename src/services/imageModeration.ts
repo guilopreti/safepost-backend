@@ -3,9 +3,15 @@ import createVisionClient from "@azure-rest/ai-vision-image-analysis";
 import { AzureKeyCredential } from "@azure/core-auth";
 import { env } from "../config/env";
 
+const imageSafetyEndpoint =
+  env.AZURE_CONTENT_SAFETY_ENDPOINT_FOR_IMAGE ||
+  env.AZURE_CONTENT_SAFETY_ENDPOINT;
+const imageSafetyKey =
+  env.AZURE_CONTENT_SAFETY_KEY_FOR_IMAGE || env.AZURE_CONTENT_SAFETY_KEY;
+
 const safetyClient = ContentSafetyClient(
-  env.AZURE_CONTENT_SAFETY_ENDPOINT,
-  new AzureKeyCredential(env.AZURE_CONTENT_SAFETY_KEY),
+  imageSafetyEndpoint,
+  new AzureKeyCredential(imageSafetyKey),
 );
 
 const visionClient = createVisionClient(
